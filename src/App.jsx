@@ -7,7 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, PieChart, Pie, Cell, Resp
 // ═══════════════════════════════════════════════════════════════════════════
 const khavdaConnectivity = [
 
-/* KHAVDA PS-I (220kV) */
+/* ---------------- KHAVDA PS-I (220 kV) ---------------- */
 
 { developer:"Sitac Kabini Renewables Pvt. Ltd.", group:"Independent", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"201", bess:false },
 { developer:"Sarjan Energy Systems Pvt. Ltd.", group:"Sarjan Group", mw:238.5, voltage:"220kV", substation:"Khavda PS-I", bay:"201", bess:false },
@@ -15,14 +15,13 @@ const khavdaConnectivity = [
 { developer:"Inox Wind Infrastructure Services Ltd.", group:"Inox Group", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"204", bess:false },
 { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:350, voltage:"220kV", substation:"Khavda PS-I", bay:"205", bess:false },
 { developer:"SJVN Green Energy Ltd.", group:"SJVN Group", mw:360, voltage:"220kV", substation:"Khavda PS-I", bay:"211", bess:false },
-
 { developer:"ABREL (RJ) Projects Ltd.", group:"Aditya Birla Group", mw:314, voltage:"220kV", substation:"Khavda PS-I", bay:"8", bess:false },
 { developer:"Aditya Birla Renewables Subsidiary Ltd.", group:"Aditya Birla Group", mw:362, voltage:"220kV", substation:"Khavda PS-I", bay:"9", bess:false },
 { developer:"Avaada Energy Pvt. Ltd.", group:"Avaada Group", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"12", bess:false },
 { developer:"Adani Green Energy Thirty-Two Ltd.", group:"Adani Group", mw:260.5, voltage:"220kV", substation:"Khavda PS-I", bay:"12", bess:false },
 { developer:"Adani Renewable Energy Eight Ltd.", group:"Adani Group", mw:115, voltage:"220kV", substation:"Khavda PS-I", bay:"13", bess:false },
 
-/* KHAVDA PS-II (400kV) */
+/* ---------------- KHAVDA PS-II (400 kV) ---------------- */
 
 { developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:2500, voltage:"400kV", substation:"Khavda PS-II", bay:"401", bess:false },
 { developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:1000, voltage:"400kV", substation:"Khavda PS-II", bay:"404", bess:false },
@@ -33,7 +32,7 @@ const khavdaConnectivity = [
 { developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1150, voltage:"400kV", substation:"Khavda PS-II", bay:"8", bess:false },
 { developer:"Reliance Industries Limited", group:"Reliance Group", mw:690, voltage:"400kV", substation:"Khavda PS-II", bay:"9", bess:false },
 
-/* KHAVDA PS-III (400kV) */
+/* ---------------- KHAVDA PS-III (400 kV) ---------------- */
 
 { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1050, voltage:"400kV", substation:"Khavda PS-III", bay:"406", bess:false },
 { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:1200, voltage:"400kV", substation:"Khavda PS-III", bay:"403", bess:false },
@@ -44,7 +43,7 @@ const khavdaConnectivity = [
 { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1325, voltage:"400kV", substation:"Khavda PS-III", bay:"7", bess:false },
 { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1160, voltage:"400kV", substation:"Khavda PS-III", bay:"8", bess:false },
 
-/* KHAVDA PS-IV (400kV) */
+/* ---------------- KHAVDA PS-IV (400 kV) ---------------- */
 
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"1", bess:false },
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"2", bess:false },
@@ -55,7 +54,7 @@ const khavdaConnectivity = [
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"7", bess:false },
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"8", bess:false },
 
-/* KHAVDA PS-V (400kV) */
+/* ---------------- KHAVDA PS-V (400 kV) ---------------- */
 
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-V", bay:"1", bess:false },
 { developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-V", bay:"2", bess:false },
