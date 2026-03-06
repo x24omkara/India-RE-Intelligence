@@ -6,68 +6,61 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, PieChart, Pie, Cell, Resp
 // DATA
 // ═══════════════════════════════════════════════════════════════════════════
 const khavdaConnectivity = [
-  { developer:"Adani Wind Energy Kutchh One Ltd.", group:"Adani Group", mw:175, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Wind Energy Kutchh Three Ltd.", group:"Adani Group", mw:250, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Wind Energy Kutchh Five Ltd.", group:"Adani Group", mw:130, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Inox Green Energy Services Ltd.", group:"Inox Group", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Wind One Renergy Ltd.", group:"Independent", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Wind Two Renergy Ltd.", group:"Independent", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Wind Three Renergy Ltd.", group:"Independent", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Wind Five Renergy Ltd.", group:"Independent", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Continuum Power Trading (TN) Ltd.", group:"Continuum Green Energy", mw:162, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:150, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Oyster Green Hybrid One Pvt. Ltd.", group:"Independent", mw:99, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"NLC India Ltd.", group:"NLC India", mw:50, voltage:"220kV", substation:"Khavda PS-I", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Sitac Kabini Renewables Pvt. Ltd.", group:"Independent", mw:300, voltage:"220kV", substation:"Khavda PS-II", bay:"201", bess:false },
-  { developer:"Srijan Energy Systems Pvt. Ltd.", group:"Independent", mw:148.5, voltage:"220kV", substation:"Khavda PS-II", bay:"207", bess:false },
-  { developer:"CGE Renewables Pvt. Ltd.", group:"Independent", mw:90, voltage:"220kV", substation:"Khavda PS-II", bay:"207", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:300, voltage:"220kV", substation:"Khavda PS-II", bay:"202", bess:false },
-  { developer:"Inox Wind Infrastructure Services Ltd.", group:"Inox Group", mw:300, voltage:"220kV", substation:"Khavda PS-II", bay:"204", bess:false },
-  { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:650, voltage:"220kV", substation:"Khavda PS-II", bay:"202/205", bess:false },
-  { developer:"SJVN Green Energy Ltd.", group:"SJVN Group", mw:360, voltage:"220kV", substation:"Khavda PS-II", bay:"211", bess:false },
-  { developer:"ABREL (RJ) Projects Ltd.", group:"Aditya Birla Group", mw:314, voltage:"220kV", substation:"Khavda PS-II", bay:"8", bess:false },
-  { developer:"Aditya Birla Renewables Subsidiary Ltd.", group:"Aditya Birla Group", mw:362, voltage:"220kV", substation:"Khavda PS-II", bay:"9", bess:false },
-  { developer:"Avaada Energy Pvt. Ltd.", group:"Avaada Group", mw:300, voltage:"220kV", substation:"Khavda PS-II", bay:"12", bess:false },
-  { developer:"Adani Green Energy Thirty-Two Ltd.", group:"Adani Group", mw:260.5, voltage:"220kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Renewable Energy Eight Ltd.", group:"Adani Group", mw:115, voltage:"220kV", substation:"Khavda PS-II", bay:"13", bess:false },
-  { developer:"Ostro Kutch Wind Pvt. Ltd.", group:"ReNew Group", mw:300, voltage:"220kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Renew Power Ventures Pvt. Ltd.", group:"ReNew Group", mw:350, voltage:"220kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:1000, voltage:"400kV", substation:"Khavda PS-II", bay:"404", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1050, voltage:"400kV", substation:"Khavda PS-II", bay:"412", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1650, voltage:"400kV", substation:"Khavda PS-II", bay:"421", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1160, voltage:"400kV", substation:"Khavda PS-II", bay:"424", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1300, voltage:"400kV", substation:"Khavda PS-II", bay:"7", bess:false },
-  { developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1150, voltage:"400kV", substation:"Khavda PS-II", bay:"8 (400kV)", bess:false },
-  { developer:"Reliance Industries Limited", group:"Reliance Group", mw:690, voltage:"400kV", substation:"Khavda PS-II", bay:"9 (400kV)", bess:false },
-  { developer:"Gujarat Industries Power Company Ltd.", group:"GIPCL", mw:1200, voltage:"400kV", substation:"Khavda PS-II", bay:"418", bess:false },
-  { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:1555, voltage:"400kV", substation:"Khavda PS-II", bay:"429", bess:false },
-  { developer:"Gujarat State Electricity Corporation Ltd.", group:"GSECL", mw:3325, voltage:"400kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Gujarat Industries Power Corporation Ltd.", group:"GIPCL", mw:1175, voltage:"400kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"NTPC REL", group:"NTPC Group", mw:300, voltage:"400kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:2500, voltage:"400kV", substation:"Khavda PS-II", bay:"Not specified in CTUIL source", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1050, voltage:"400kV", substation:"Khavda PS-III", bay:"406", bess:false },
-  { developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:1200, voltage:"400kV", substation:"Khavda PS-III", bay:"403", bess:false },
-  { developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1250, voltage:"400kV", substation:"Khavda PS-III", bay:"412", bess:false },
-  { developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1100, voltage:"400kV", substation:"Khavda PS-III", bay:"4", bess:false },
-  { developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1250, voltage:"400kV", substation:"Khavda PS-III", bay:"5", bess:false },
-  { developer:"NHPC Ltd.", group:"NHPC", mw:600, voltage:"400kV", substation:"Khavda PS-III", bay:"6", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1325, voltage:"400kV", substation:"Khavda PS-III", bay:"7", bess:false },
-  { developer:"Adani Power Limited", group:"Adani Group", mw:8750, voltage:"400kV", substation:"Khavda PS-IV", bay:"Bays 1–8 (Sec-A)", bess:false },
-  { developer:"Adani Power Limited", group:"Adani Group", mw:3750, voltage:"400kV", substation:"Khavda PS-IV", bay:"Bays 1–3 (Sec-B)", bess:false },
-  { developer:"Sprng Power Earth Pvt. Ltd.", group:"Sprng Energy", mw:250, voltage:"220kV", substation:"Khavda PS-V", bay:"3", bess:false },
-  { developer:"Sprng Energy Pvt. Ltd.", group:"Sprng Energy", mw:250, voltage:"220kV", substation:"Khavda PS-V", bay:"4", bess:false },
-  { developer:"Sprng Vayu Vidyut Pvt. Ltd.", group:"Sprng Energy", mw:348.24, voltage:"220kV", substation:"Khavda PS-V", bay:"4/209", bess:false },
-  { developer:"Kinurja S1 Private Limited", group:"Independent", mw:65, voltage:"220kV", substation:"Khavda PS-V", bay:"5", bess:false },
-  { developer:"H.G. Banaskantha BESS Private Limited", group:"Independent", mw:217.64, voltage:"220kV", substation:"Khavda PS-V", bay:"5", bess:true },
-  { developer:"Sunsure Solarpark RJ One Pvt. Ltd.", group:"Sunsure Energy", mw:350, voltage:"220kV", substation:"Khavda PS-V", bay:"1", bess:false },
-  { developer:"Azure Power Sixty Three Pvt. Ltd.", group:"Azure Power", mw:300, voltage:"220kV", substation:"Khavda PS-V", bay:"2", bess:false },
-  { developer:"Renew Solar Power Pvt. Ltd.", group:"ReNew Group", mw:1000, voltage:"220kV", substation:"Khavda PS-V", bay:"3", bess:false },
-  { developer:"ACME Solar Holdings Ltd.", group:"ACME Group", mw:400, voltage:"220kV", substation:"Khavda PS-V", bay:"4 (PS-V)", bess:false },
-  { developer:"Sprng Wind Energy Pvt. Ltd.", group:"Sprng Energy", mw:300, voltage:"400kV", substation:"Khavda PS-V", bay:"1 (400kV)", bess:false },
-  { developer:"Sprng Ojas Pvt. Ltd.", group:"Sprng Energy", mw:400, voltage:"400kV", substation:"Khavda PS-V", bay:"1 (400kV)", bess:false },
-  { developer:"Sprng Vayu Kiran Pvt. Ltd.", group:"Sprng Energy", mw:400, voltage:"400kV", substation:"Khavda PS-V", bay:"1 (400kV)", bess:false },
-  { developer:"JSW Neo Energy Ltd.", group:"JSW Group", mw:400, voltage:"400kV", substation:"Khavda PS-V", bay:"2 (400kV)", bess:false },
-  { developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1965, voltage:"400kV", substation:"Khavda PS-V", bay:"Not specified in CTUIL source", bess:false },
+
+/* KHAVDA PS-I (220kV) */
+
+{ developer:"Sitac Kabini Renewables Pvt. Ltd.", group:"Independent", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"201", bess:false },
+{ developer:"Sarjan Energy Systems Pvt. Ltd.", group:"Sarjan Group", mw:238.5, voltage:"220kV", substation:"Khavda PS-I", bay:"201", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"202", bess:false },
+{ developer:"Inox Wind Infrastructure Services Ltd.", group:"Inox Group", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"204", bess:false },
+{ developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:350, voltage:"220kV", substation:"Khavda PS-I", bay:"205", bess:false },
+{ developer:"SJVN Green Energy Ltd.", group:"SJVN Group", mw:360, voltage:"220kV", substation:"Khavda PS-I", bay:"211", bess:false },
+
+{ developer:"ABREL (RJ) Projects Ltd.", group:"Aditya Birla Group", mw:314, voltage:"220kV", substation:"Khavda PS-I", bay:"8", bess:false },
+{ developer:"Aditya Birla Renewables Subsidiary Ltd.", group:"Aditya Birla Group", mw:362, voltage:"220kV", substation:"Khavda PS-I", bay:"9", bess:false },
+{ developer:"Avaada Energy Pvt. Ltd.", group:"Avaada Group", mw:300, voltage:"220kV", substation:"Khavda PS-I", bay:"12", bess:false },
+{ developer:"Adani Green Energy Thirty-Two Ltd.", group:"Adani Group", mw:260.5, voltage:"220kV", substation:"Khavda PS-I", bay:"12", bess:false },
+{ developer:"Adani Renewable Energy Eight Ltd.", group:"Adani Group", mw:115, voltage:"220kV", substation:"Khavda PS-I", bay:"13", bess:false },
+
+/* KHAVDA PS-II (400kV) */
+
+{ developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:2500, voltage:"400kV", substation:"Khavda PS-II", bay:"401", bess:false },
+{ developer:"Adani Renewable Energy Holding Four Ltd.", group:"Adani Group", mw:1000, voltage:"400kV", substation:"Khavda PS-II", bay:"404", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1050, voltage:"400kV", substation:"Khavda PS-II", bay:"412", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1650, voltage:"400kV", substation:"Khavda PS-II", bay:"421", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1160, voltage:"400kV", substation:"Khavda PS-II", bay:"424", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1300, voltage:"400kV", substation:"Khavda PS-II", bay:"7", bess:false },
+{ developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1150, voltage:"400kV", substation:"Khavda PS-II", bay:"8", bess:false },
+{ developer:"Reliance Industries Limited", group:"Reliance Group", mw:690, voltage:"400kV", substation:"Khavda PS-II", bay:"9", bess:false },
+
+/* KHAVDA PS-III (400kV) */
+
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1050, voltage:"400kV", substation:"Khavda PS-III", bay:"406", bess:false },
+{ developer:"NTPC Renewable Energy Ltd.", group:"NTPC Group", mw:1200, voltage:"400kV", substation:"Khavda PS-III", bay:"403", bess:false },
+{ developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1250, voltage:"400kV", substation:"Khavda PS-III", bay:"412", bess:false },
+{ developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1100, voltage:"400kV", substation:"Khavda PS-III", bay:"4", bess:false },
+{ developer:"Sarjan Realties Pvt. Ltd.", group:"Sarjan Group", mw:1250, voltage:"400kV", substation:"Khavda PS-III", bay:"5", bess:false },
+{ developer:"NHPC Ltd.", group:"NHPC", mw:600, voltage:"400kV", substation:"Khavda PS-III", bay:"6", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1325, voltage:"400kV", substation:"Khavda PS-III", bay:"7", bess:false },
+{ developer:"Adani Green Energy Ltd.", group:"Adani Group", mw:1160, voltage:"400kV", substation:"Khavda PS-III", bay:"8", bess:false },
+
+/* KHAVDA PS-IV (400kV) */
+
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"1", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"2", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"3", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:625, voltage:"400kV", substation:"Khavda PS-IV", bay:"4", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:625, voltage:"400kV", substation:"Khavda PS-IV", bay:"5", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"6", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"7", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-IV", bay:"8", bess:false },
+
+/* KHAVDA PS-V (400kV) */
+
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-V", bay:"1", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-V", bay:"2", bess:false },
+{ developer:"Adani Power Limited", group:"Adani Group", mw:1250, voltage:"400kV", substation:"Khavda PS-V", bay:"3", bess:false }
+
 ];
 
 
