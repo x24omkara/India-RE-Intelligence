@@ -1,38 +1,42 @@
-import { useState } from "react"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 import KhavdaDashboard from "./Dashboards/KhavdaDashboard"
 import AvaadaDashboard from "./Dashboards/AvaadaDashboard"
 
 export default function App() {
 
-  const [page,setPage] = useState("khavda")
-
   return (
 
-    <div>
+    <BrowserRouter>
 
       <div style={{
-        padding:"12px",
+        padding:12,
         borderBottom:"1px solid #ddd",
         display:"flex",
-        gap:"20px"
+        gap:20
       }}>
 
-        <button onClick={()=>setPage("khavda")}>
-          Khavda Transmission
-        </button>
+        <Link to="/">Khavda Transmission</Link>
 
-        <button onClick={()=>setPage("avaada")}>
-          Avaada Intelligence
-        </button>
+        <Link to="/avaada">Avaada Intelligence</Link>
 
       </div>
 
-      {page === "khavda" && <KhavdaDashboard />}
+      <Routes>
 
-      {page === "avaada" && <AvaadaDashboard />}
+        <Route
+          path="/"
+          element={<KhavdaDashboard />}
+        />
 
-    </div>
+        <Route
+          path="/avaada"
+          element={<AvaadaDashboard />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
 
   )
 }
