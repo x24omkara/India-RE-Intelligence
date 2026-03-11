@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from "recharts";
+// recharts imported for potential future use — currently all charts use CSS/SVG
 
 // ══════════════════════════════════════════════════════════════
 // DATA
@@ -1043,7 +1043,7 @@ function GridArchitecture() {
   // Generation tier boxes
   const genBoxes = [
     { x: 28,  w: 148, l: "Wind Generation",  s: "Adani Wind · Inox · Continuum", c: "#3b82f6" },
-    { x: 188, w: 148, l: "Solar Generation", s: "NTPC · GSECL · GIPCL",  c: "#10b981" },
+    { x: 188, w: 148, l: "Solar Generation", s: "NTPC · GSECL · AVAADA · GIPCL",  c: "#10b981" },
     { x: 348, w: 148, l: "Hybrid RE",        s: "Sprng · ACME · Azure · ReNew",   c: "#8b5cf6" },
     { x: 508, w: 136, l: "BESS Storage",     s: "H.G. Banaskantha — 218 MW",      c: "#a855f7" },
     { x: 656, w: 56,  l: "",                 s: "",                                c: "#374151" }, // spacer
@@ -1066,8 +1066,8 @@ function GridArchitecture() {
         <div className="text-xs text-gray-500">Generation → Voltage Injection → Pooling Stations → 765 kV ISTS → National Grid & HVDC corridors</div>
       </div>
 
-      <div className="overflow-x-auto">
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="w-full">
+      <div className="overflow-x-auto" style={{ minHeight: H }}>
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: "block", minWidth: W }}>
           <rect width={W} height={H} fill="#0f172a" rx="8" />
 
           {/* ── ROW LABELS ── */}
@@ -1369,10 +1369,10 @@ function NetworkMapFlow() {
         </div>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4" style={{ height: SH, minHeight: SH }}>
         {/* SVG schematic */}
-        <div className="flex-1 rounded-xl overflow-hidden border border-gray-700 bg-gray-950 relative" style={{ height: SH }}>
-          <svg width="100%" height="100%" viewBox={`0 0 ${SW} ${SH}`} style={{ display: "block" }}>
+        <div className="flex-1 rounded-xl overflow-hidden border border-gray-700 bg-gray-950 relative" style={{ height: SH, minHeight: SH }}>
+          <svg width="100%" height="100%" viewBox={`0 0 ${SW} ${SH}`} style={{ display: "block", width: "100%", height: "100%" }}>
             <rect width={SW} height={SH} fill="#07111f" />
 
             {/* Zone bands */}
@@ -1558,7 +1558,7 @@ function NetworkMapFlow() {
         </div>
 
         {/* Right panel: line status list */}
-        <div className="w-52 shrink-0 space-y-3">
+        <div className="w-52 shrink-0 space-y-3" style={{ height: SH, overflowY: "auto" }}>
           <div className="bg-gray-800 border border-gray-700 rounded-xl p-3">
             <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Line Status at {milestone.label}</div>
             <div className="space-y-1 max-h-96 overflow-y-auto">
