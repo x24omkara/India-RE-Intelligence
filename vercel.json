@@ -1,8 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/((?!assets|.*\\..*).*)",
-      "destination": "/index.html"
+      "src": "/avaada(.*)",
+      "middlewarePath": "middleware/password.js"
     }
   ]
 }
