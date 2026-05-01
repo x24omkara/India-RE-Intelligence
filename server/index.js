@@ -4,6 +4,8 @@ import express from "express";
 import session from "express-session";
 import cors from "cors";
 import dotenv from "dotenv";
+import { createDashboardDataRouter } from "./dashboardDataRoutes.js";
+import { isAppPasswordHashFormat, verifyPassword } from "./passwordHash.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "..", ".env") });
@@ -11,7 +13,9 @@ dotenv.config({ path: path.resolve(__dirname, "..", ".env") });
 const app = express();
 
 const PORT = Number(process.env.PORT);
-const APP_PASSWORD = process.env.APP_PASSWORD;
+/** Argon2id PHC string from: npm run hash-password -- "your-password" */
+const APP_PASSWORD_HASH =
+  typeof process.env.APP_PASSWORD_HASH === "string" ? process.env.APP_PASSWORD_HASH.trim() : "";
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const isProd = process.env.NODE_ENV === "production";
 
@@ -56,8 +60,26 @@ if (!Number.isFinite(PORT) || PORT <= 0) {
   process.exit(1);
 }
 
-if (!APP_PASSWORD) {
-  console.error("APP_PASSWORD is missing in environment variables.");
+if (!APP_PASSWORD_HASH) {
+  console.error(
+    "APP_PASSWORD_HASH is missing. Generate one with: npm run hash-password -- \"your-password\"\n" +
+      "Then set APP_PASSWORD_HASH in .env to the printed value (scrypt1$...)."
+  );
+  process.exit(1);
+}
+
+if (/^\$2[aby]\$/.test(APP_PASSWORD_HASH)) {
+  console.error(
+    "APP_PASSWORD_HASH looks like bcrypt. This app now uses Node.js scrypt only.\n" +
+      "Regenerate with: npm run hash-password -- \"your-password\" and update .env."
+  );
+  process.exit(1);
+}
+
+if (!isAppPasswordHashFormat(APP_PASSWORD_HASH)) {
+  console.error(
+    "APP_PASSWORD_HASH must be a scrypt1$ hash from: npm run hash-password -- \"your-password\""
+  );
   process.exit(1);
 }
 
@@ -87,6 +109,7 @@ app.use(
       return callback(null, false);
     },
     credentials: true,
+    exposedHeaders: ["Last-Modified", "X-Dashboard-File-Updated-At"],
   })
 );
 
@@ -102,15 +125,21 @@ app.use(
   })
 );
 
-app.post("/api/auth/login", (req, res) => {
+app.post("/api/auth/login", async (req, res) => {
   const { password } = req.body || {};
 
   if (typeof password !== "string" || !password.trim()) {
     return res.status(400).json({ ok: false, message: "Password is required." });
   }
 
-  if (password !== APP_PASSWORD) {
-    return res.status(401).json({ ok: false, message: "Incorrect password." });
+  try {
+    const match = await verifyPassword(password, APP_PASSWORD_HASH);
+    if (!match) {
+      return res.status(401).json({ ok: false, message: "Incorrect password." });
+    }
+  } catch (e) {
+    console.error("login verifyPassword", e);
+    return res.status(500).json({ ok: false, message: "Login could not be verified." });
   }
 
   req.session.isAuthenticated = true;
@@ -149,6 +178,8 @@ app.use((req, res, next) => {
   return res.status(404).json({ ok: false, message: "Not found" });
 });
 
+app.use("/api/dashboard-data", createDashboardDataRouter());
+
 app.use((req, res) => {
   res.status(404).json({ ok: false, message: "Not found" });
 });
@@ -157,7 +188,9 @@ app.listen(PORT, () => {
   if (backendDisplay) {
     console.log(`API public URL (from env): ${backendDisplay} (listening on port ${PORT})`);
   } else {
-    console.log(`API listening on port ${PORT} (set BACKEND_URL, BACKEND_URL_LOCAL, or BACKEND_URL_PRODUCTION for log label)`);
+    console.log(
+      `API listening on port ${PORT} (set BACKEND_URL, BACKEND_URL_LOCAL, or BACKEND_URL_PRODUCTION for log label)`
+    );
   }
   console.log(`CORS allowed origins: ${allowedOrigins.join(", ")}`);
 });

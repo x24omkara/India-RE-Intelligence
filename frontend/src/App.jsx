@@ -112,9 +112,19 @@ function LoginForm({ onSubmit, error }) {
   );
 }
 
+const UI = {
+  font: "'Inter', system-ui, sans-serif",
+  text: "#1a1f36",
+  muted: "#64748b",
+  border: "#dde1ee",
+  overlay: "rgba(15,23,42,0.45)",
+  primary: "#0077b6",
+};
+
 export default function App() {
   const [gate, setGate] = useState(() => (API_BASE ? "loading" : "config"));
   const [loginError, setLoginError] = useState("");
+  const [logoutConfirmOpen, setLogoutConfirmOpen] = useState(false);
 
   useEffect(() => {
     if (!API_BASE) return;
@@ -164,6 +174,15 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!logoutConfirmOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLogoutConfirmOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [logoutConfirmOpen]);
+
   async function handleLogin(password) {
     setLoginError("");
     const res = await apiFetch("/api/auth/login", {
@@ -177,8 +196,9 @@ export default function App() {
     setLoginError("Incorrect password. Please try again.");
   }
 
-  async function handleLogout() {
+  async function confirmLogout() {
     await apiFetch("/api/auth/logout", { method: "POST" });
+    setLogoutConfirmOpen(false);
     setGate("out");
   }
 
@@ -255,7 +275,7 @@ export default function App() {
         <Link to="/avaada">Avaada Intelligence</Link>
         <button
           type="button"
-          onClick={handleLogout}
+          onClick={() => setLogoutConfirmOpen(true)}
           style={{
             marginLeft: "auto",
             padding: "6px 12px",
@@ -264,6 +284,7 @@ export default function App() {
             background: "#fff",
             cursor: "pointer",
             fontSize: 13,
+            fontFamily: UI.font,
           }}
         >
           Log out
@@ -274,6 +295,86 @@ export default function App() {
         <Route path="/" element={<KhavdaDashboard />} />
         <Route path="/avaada" element={<AvaadaDashboard />} />
       </Routes>
+
+      {logoutConfirmOpen ? (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: UI.overlay,
+            zIndex: 10000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 16,
+            fontFamily: UI.font,
+          }}
+          onClick={() => setLogoutConfirmOpen(false)}
+          role="presentation"
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: 10,
+              maxWidth: 400,
+              width: "100%",
+              padding: "22px 24px",
+              boxShadow: "0 12px 40px rgba(0,0,0,.15)",
+              border: `1px solid ${UI.border}`,
+            }}
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logout-confirm-title"
+          >
+            <h2
+              id="logout-confirm-title"
+              style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 700, color: UI.text }}
+            >
+              Log out?
+            </h2>
+            <p style={{ margin: 0, color: UI.muted, fontSize: 14, lineHeight: 1.55 }}>
+              You will need the password to sign in again.
+            </p>
+            <div style={{ display: "flex", gap: 10, marginTop: 22, justifyContent: "flex-end" }}>
+              <button
+                type="button"
+                onClick={() => setLogoutConfirmOpen(false)}
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: 6,
+                  border: "1px solid #c7cbe0",
+                  background: "#fff",
+                  color: "#1f2a44",
+                  fontWeight: 600,
+                  fontSize: 13,
+                  cursor: "pointer",
+                  fontFamily: UI.font,
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => void confirmLogout()}
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: 6,
+                  border: "none",
+                  background: UI.primary,
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontSize: 13,
+                  cursor: "pointer",
+                  fontFamily: UI.font,
+                }}
+              >
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </BrowserRouter>
   );
 }
