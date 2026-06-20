@@ -1,25 +1,20 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 import KhavdaDashboard from "./Dashboards/KhavdaDashboard"
-//import AvaadaDashboard from "./Dashboards/AvaadaREintelligence"
 
 export default function App() {
-
   return (
-
     <BrowserRouter>
 
-      <div style={{
-        padding:12,
-        borderBottom:"1px solid #ddd",
-        display:"flex",
-        gap:20
-      }}>
-
+      <div
+        style={{
+          padding: 12,
+          borderBottom: "1px solid #ddd",
+          display: "flex",
+          gap: 20,
+        }}
+      >
         <Link to="/">Khavda Transmission</Link>
-
-      //  <Link to="/avaada">Avaada Intelligence</Link>
-
       </div>
 
       <Routes>
@@ -31,12 +26,23 @@ export default function App() {
 
         <Route
           path="/avaada"
-          element={<AvaadaDashboard />}
+          element={
+            <div
+              style={{
+                padding: "40px",
+                textAlign: "center",
+              }}
+            >
+              <h1>Avaada Dashboard Moved</h1>
+              <p>
+                This dashboard has been migrated to the internal Avaada environment.
+              </p>
+            </div>
+          }
         />
 
       </Routes>
 
     </BrowserRouter>
-
   )
 }
