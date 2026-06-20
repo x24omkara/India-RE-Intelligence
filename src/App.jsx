@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 import KhavdaDashboard from "./Dashboards/KhavdaDashboard"
-import AvaadaDashboard from "./Dashboards/AvaadaREintelligence"
+//import AvaadaDashboard from "./Dashboards/AvaadaREintelligence"
 
 export default function App() {
 
@@ -18,7 +18,7 @@ export default function App() {
 
         <Link to="/">Khavda Transmission</Link>
 
-        <Link to="/avaada">Avaada Intelligence</Link>
+      //  <Link to="/avaada">Avaada Intelligence</Link>
 
       </div>
 
